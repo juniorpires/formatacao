@@ -24,4 +24,61 @@ public class Formatter {
         }
         return protocolo;
     }
+    
+    public static String licenca(String licenca){
+        if(licenca!=null && licenca.length()==13){
+           return String.format("%s.%s.%s.%s.%s/%s",licenca.substring(0 , 1) ,
+                                           licenca.substring(1, 2),
+                                           licenca.substring(2, 4),
+                                           licenca.substring(4 , 7),
+                                           licenca.substring(7 , 11),
+                                           licenca.substring(11 , 13)
+                                           );
+        }
+        return licenca;
+    }
+    
+    public static String cpfCnpj(String cpfCnpj){
+        if(cpfCnpj!=null){
+            if(cpfCnpj.length()==14){
+                return String.format("%s.%s.%s/%s-%s",cpfCnpj.substring(0,2),
+                           cpfCnpj.substring(2,5),
+                           cpfCnpj.substring(5,8),
+                           cpfCnpj.substring(8,12),
+                           cpfCnpj.substring(12,14));
+                         
+                
+            }else if(cpfCnpj.length()==11){
+                return String.format("%s.%s.%s-%s",cpfCnpj.substring(0,3),
+                           cpfCnpj.substring(3,6),
+                           cpfCnpj.substring(6,9),
+                           cpfCnpj.substring(9,11));
+            }
+        }
+         return cpfCnpj;
+    }
+    public static String telefone(String telefone){
+        if(telefone!=null && telefone.length()==10){
+            return String.format("(%s) %s-%s",telefone.substring(0,2),
+                           telefone.substring(2,6),
+                           telefone.substring(6,10));
+        }
+         return telefone;
+    }
+    public static String cnae(String cnae){
+        if(cnae!=null && cnae.length()==7){
+           return String.format("%s-%s/%s",cnae.substring(0,4),
+                           cnae.substring(4,5),
+                           cnae.substring(5,7));
+        }
+         return cnae;
+    }
+    public static String cep(String cep){
+        if(cep!=null && cep.length()==8){
+            return String.format("%s-%s", cep.substring(0, 5),cep.substring(5));
+        }
+         return cep;
+    }
+    
+    
 }
