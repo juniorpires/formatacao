@@ -6,13 +6,15 @@
 
 package br.gov.pe.saudecaruaru.sms.util;
 
+import java.util.Date;
+
 /**
  *
  * @author smsti01
  */
 public class Formatter {
     
-    public static String protocolo(String protocolo){
+    public String protocolo(String protocolo){
         if (protocolo!= null && protocolo.length() == 11){
             StringBuilder builder=new StringBuilder();
             builder.append(protocolo.substring(0, 5));
@@ -25,7 +27,7 @@ public class Formatter {
         return protocolo;
     }
     
-    public static String licenca(String licenca){
+    public  String licenca(String licenca){
         if(licenca!=null && licenca.length()==13){
            return String.format("%s.%s.%s.%s.%s/%s",licenca.substring(0 , 1) ,
                                            licenca.substring(1, 2),
@@ -38,7 +40,7 @@ public class Formatter {
         return licenca;
     }
     
-    public static String cpfCnpj(String cpfCnpj){
+    public  String cpfCnpj(String cpfCnpj){
         if(cpfCnpj!=null){
             if(cpfCnpj.length()==14){
                 return String.format("%s.%s.%s/%s-%s",cpfCnpj.substring(0,2),
@@ -57,7 +59,7 @@ public class Formatter {
         }
          return cpfCnpj;
     }
-    public static String telefone(String telefone){
+    public  String telefone(String telefone){
         if(telefone!=null && telefone.length()==10){
             return String.format("(%s) %s-%s",telefone.substring(0,2),
                            telefone.substring(2,6),
@@ -65,7 +67,7 @@ public class Formatter {
         }
          return telefone;
     }
-    public static String cnae(String cnae){
+    public  String cnae(String cnae){
         if(cnae!=null && cnae.length()==7){
            return String.format("%s-%s/%s",cnae.substring(0,4),
                            cnae.substring(4,5),
@@ -73,11 +75,19 @@ public class Formatter {
         }
          return cnae;
     }
-    public static String cep(String cep){
+    public String cep(String cep){
         if(cep!=null && cep.length()==8){
             return String.format("%s-%s", cep.substring(0, 5),cep.substring(5));
         }
          return cep;
+    }
+    
+    public Object dataVazia(Date data){
+        if(data==null){
+            return "       /       /    "; 
+        }
+        
+        return data;
     }
     
     
