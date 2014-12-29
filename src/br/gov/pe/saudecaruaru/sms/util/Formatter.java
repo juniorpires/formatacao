@@ -6,13 +6,27 @@
 
 package br.gov.pe.saudecaruaru.sms.util;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  *
  * @author smsti01
  */
 public class Formatter {
+    private static final String MESES[] = {"Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto",
+        "Setembro","Outubro","Novembro","Dezembro",};
+    
+    public String mes(int mes){
+        if(0<mes && mes<12){
+            return MESES[mes-1];
+        }
+        
+        return String.valueOf(mes);
+    }
     
     public String protocolo(String protocolo){
         if (protocolo!= null && protocolo.length() == 11){
@@ -90,5 +104,22 @@ public class Formatter {
         return data;
     }
     
+    public String capacidade(String capacidade){
+     if(capacidade!=null){
+            DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(Locale.GERMAN);
+            DecimalFormat df = new DecimalFormat("###,###,###,###",otherSymbols);
+            String c = df.format(Integer.parseInt(capacidade));
+            return c;
+        }
+         return capacidade;
+    }
+    
+    public String placa(String placa){
+    if(placa!=null && placa.length()==7){
+       return String.format("%s-%s",placa.substring(0,3),
+                           placa.substring(3,7));
+    }
+        return placa;
+    }
     
 }
